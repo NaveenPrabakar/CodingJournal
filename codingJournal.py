@@ -45,10 +45,10 @@ def main():
             output(choice1, choice2, choice3, choice4, choice5, choice6)
             print("Successfully written into journal.")
         elif pick == 2:
-            # Implement code for making changes
-            print("Option not yet implemented.")
+            date = input("What was the date of the entry you wish to eidt? (xxxx-xx-xx) ")
+            PreviousJournal.modify(date,name)   
         elif pick == 3:
-            date = input("What was the date of the entry you wish to see? (xxxx-xx-xx)")
+            date = input("What was the date of the entry you wish to see? (xxxx-xx-xx) ")
             PreviousJournal.extract(date, name)
         elif pick == 4:
             print("Hope you write again!")
