@@ -1,4 +1,5 @@
 import mysql.connector
+import Grammer
 
 db = mysql.connector.connect(#connects to MySQL Server for data to be stored
     host = "localhost",
@@ -38,9 +39,12 @@ def createTables():
 
 #Inserts User entries into the database
 def InsertData(choice1, choice2, choice3, choice4, choice5, choice6, name):
+
     mycursor.execute(f"USE {name}")
     sql = "INSERT INTO entries (description, errors, buddy, Todo, addtional, date) VALUES (%s, %s, %s, %s, %s, %s)"
-    values = (choice1, choice2, choice3, choice4, choice5, choice6)
+    choices = [choice1, choice2, choice3, choice4, choice5]
+    choices = Grammer.spell(choices)
+    values = (choices[0], choices[1], choices[2], choices[3], choices[4], choice6)
     try:
         mycursor.execute(sql, values)
         db.commit()
