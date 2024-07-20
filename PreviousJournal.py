@@ -1,4 +1,5 @@
 import mysql.connector
+import Grammer
 
 db = mysql.connector.connect( #connects to MySQL Server for data to be accessed
     host = "localhost",
@@ -61,7 +62,9 @@ def modify(date,name):
             break
 
         edit = input("Enter the new change")
-        update(choice, edit, date)
+        temp = [edit]
+        temp = Grammer.spell(temp)
+        update(choice, temp[0], date)
 
 
 
